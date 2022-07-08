@@ -3,23 +3,36 @@
 
 <div class="row">
     <div class="col">
-
-        <app-personajes [data]="personajes"></app-personajes>
-
-        <!-- app-personajes es el componente hijo, porque esta metido dentro de main-page.component. A este componente hijo le voy a pasar una propiedad que llamo 'data' y le asigno 'personajes' -->
-
-        <!-- ahora estoy en el padre y le voy a pasar al hijo mediante "data" que es el sinonimo de la propiedad el valor de personajes ... que es un array -->
-
+        <h3>Personajes</h3>
+        <hr>
+        <ul *ngFor="let item of personajes" >
+            <li>{{item.nombre}} - {{item.poder | number}}</li>
+        </ul>
     </div>
 
     <div class="col">
-
-        <app-agregar 
-            [nuevo_recibido]="nuevo"
-            (onNuevoPersonaje)="agregarNuevoPersonaje( $event )"
+        <h3>Agregar <small>{{nuevo.nombre}} - {{nuevo.poder}}</small></h3>
+        <hr>
+        <form (ngSubmit)="agregar()" >
+            <input 
+                type="text" 
+                name="nombrePuesto"
+                id="" 
+                placeholder="nombre" 
+                [(ngModel)]="nuevo.nombre"
             >
-        </app-agregar>
+                <!-- [value]="nuevo.nombre" 
+                (input)="cambiarNombre( $event )"  -->
 
+            <input 
+                type="number"
+                name="poder"
+                id=""
+                placeholder="poder"
+                [(ngModel)]="nuevo.poder">
+
+            <button>Agregar</button>
+        </form>
 
     </div>
 
