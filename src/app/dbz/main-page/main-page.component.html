@@ -1,0 +1,26 @@
+<h1>Dragon Ball Z</h1>
+<hr>
+
+<div class="row">
+    <div class="col">
+
+        <app-personajes [data]="personajes"></app-personajes>
+
+        <!-- app-personajes es el componente hijo, porque esta metido dentro de main-page.component. A este componente hijo le voy a pasar una propiedad que llamo 'data' y le asigno 'personajes' -->
+
+        <!-- ahora estoy en el padre y le voy a pasar al hijo mediante "data" que es el sinonimo de la propiedad el valor de personajes ... que es un array -->
+
+    </div>
+
+    <div class="col">
+
+        <app-agregar 
+            [nuevo_recibido]="nuevo"
+            (onNuevoPersonaje)="agregarNuevoPersonaje( $event )"
+            >
+        </app-agregar>
+
+
+    </div>
+
+</div>
